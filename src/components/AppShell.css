@@ -1,0 +1,385 @@
+:root {
+    --foreground-color: #374151;
+    --background-color: #334252;
+    --primary-color: #5baafa;
+    --secondary-color: #e5e7eb;
+
+    --primary-color-focus: #3b82f6;
+    --secondary-color-focus: #e5e7ebc8;
+
+    --accent-color: #3b82f6;
+    --text-color: #ffffff;
+    --text-color-contrast: #111827;
+    --border-color: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --overlay-color: rgba(0, 0, 0, 0.47);
+    --overlay-color-light: rgba(255, 255, 255, 0.65);
+
+    --font-family: "Jacques Francois", serif;
+}
+
+body,
+html {
+    /* TODO: background image is a prop to the AppShell component */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("/src/assets/background/hike_shot.jpeg");
+    background-color: var(--background-color);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+}
+
+/* AppShell Container */
+.app-shell {
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    /* border-bottom: 1px solid var(--border-color); */
+    top: 0;
+    z-index: 100;
+}
+
+/* Desktop Action Row */
+.action-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-button {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+.hamburger-line {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.mobile-menu-content {
+    background-color: var(--primary-color);
+    width: 80%;
+    max-width: 300px;
+    height: 100%;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    box-shadow: 2px 0 10px var(--shadow-color);
+}
+
+.mobile-menu-close {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--foreground-color);
+    padding: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 0.75rem 2rem;
+    background: var(--overlay-color-light);
+    border: none;
+    text-align: left;
+    font-size: 1.25rem;
+    color: var(--text-color-contrast);
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+    width: 100%;
+}
+
+.nav-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.action-row-button {
+    background-color: var(--secondary-color);
+    border: none;
+    color: var(--foreground-color);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+}
+
+.action-row-button:hover {
+    background-color: var(--secondary-color-focus);
+}
+
+/* Main Content */
+.app-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Desktop Layout */
+.desktop-layout {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+}
+
+.left-content-container {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    /* background-color: var(--background-color); */
+    /* padding: 2rem 1rem; */
+    /* border-right: 1px solid var(--border-color); */
+    z-index: 50;
+}
+
+.left-content {
+    display: flex;
+    width: 300px;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    position: sticky;
+    bottom: 2rem;
+}
+
+.primary-image-container {
+    margin-bottom: 2rem;
+    flex-shrink: 0;
+}
+
+.primary-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
+}
+
+.navigation-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.right-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    min-height: 80vh;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.title-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.title-icon {
+    width: 6rem;
+    height: 6rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.page-content {
+    flex: 1;
+}
+
+/* Mobile Layout */
+.mobile-layout {
+    display: none;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1.5rem;
+}
+
+.mobile-page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+    text-align: center;
+}
+
+.mobile-primary-image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.mobile-primary-image {
+    width: 225px;
+    height: 225px;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
+}
+
+.mobile-page-content {
+    flex: 1;
+}
+
+/* Footer */
+.app-footer {
+    background-color: var(--overlay-color);
+    border-top: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(--text-color);
+    backdrop-filter: blur(2px);
+}
+
+/* Navigation Icons */
+.nav-icon {
+    font-size: 1.25rem;
+    width: 1.5rem;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .app-header {
+        padding: 1rem;
+        justify-content: flex-start;
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: flex;
+    }
+
+    .desktop-layout {
+        display: none;
+    }
+
+    .mobile-layout {
+        display: flex;
+    }
+
+    .app-footer {
+        padding: 1rem;
+    }
+
+    .left-content-container {
+        position: static;
+        width: auto;
+        height: auto;
+        margin-left: 0;
+    }
+
+    .right-content {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-layout {
+        display: none;
+    }
+
+    .desktop-layout {
+        display: flex;
+    }
+}
+
+/* Animation for hamburger menu */
+.mobile-menu-button:hover .hamburger-line {
+    background-color: var(--secondary-color-focus);
+}
+
+/* Focus states for accessibility */
+/* .mobile-menu-button:focus,
+.mobile-nav-button:focus,
+.desktop-nav-button:focus,
+.mobile-menu-close:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+} */
