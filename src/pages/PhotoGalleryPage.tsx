@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { createPortal } from "react-dom";
 
 const PHOTOS = [
     {
@@ -129,6 +130,24 @@ const PHOTOS = [
 ];
 
 const PhotoGalleryPage: React.FC = () => {
+    const [selectedImage, setSelectedImage] = useState<
+        (typeof PHOTOS)[0] | null
+    >(null);
+
+    const openLightbox = (photo: (typeof PHOTOS)[0]) => {
+        setSelectedImage(photo);
+    };
+
+    const closeLightbox = () => {
+        setSelectedImage(null);
+    };
+
+    const handleOverlayClick = (e: React.MouseEvent) => {
+        if (e.target === e.currentTarget) {
+            closeLightbox();
+        }
+    };
+
     return (
         <div style={{ lineHeight: "1.6" }}>
             <div
@@ -160,6 +179,7 @@ const PhotoGalleryPage: React.FC = () => {
                         onMouseLeave={(e) => {
                             e.currentTarget.style.transform = "scale(1)";
                         }}
+                        onClick={() => openLightbox(photo)}
                     >
                         <img
                             src={photo.src}
@@ -200,6 +220,40 @@ const PhotoGalleryPage: React.FC = () => {
                     </div>
                 ))}
             </div>
+
+            {/* Lightbox Modal */}
+            {selectedImage &&
+                createPortal(
+                    <div
+                        style={{
+                            position: "fixed",
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            backgroundColor: "rgba(0, 0, 0, 0.8)",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            zIndex: 1000,
+                            padding: "2rem",
+                        }}
+                        onClick={handleOverlayClick}
+                    >
+                        <img
+                            src={selectedImage.src}
+                            alt={selectedImage.alt}
+                            style={{
+                                maxWidth: "100%",
+                                maxHeight: "100%",
+                                objectFit: "contain",
+                                borderRadius: "8px",
+                            }}
+                            onClick={(e) => e.stopPropagation()}
+                        />
+                    </div>,
+                    document.body
+                )}
         </div>
     );
 };
