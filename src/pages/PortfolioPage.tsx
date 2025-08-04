@@ -16,7 +16,7 @@ const PortfolioPage: React.FC = () => {
             title: "Mobile App Design",
             content:
                 "A cross-platform mobile application for task management with intuitive UI/UX design.",
-            image: "/src/assets/gallery/headshot.jpeg",
+            image: "/src/assets/primary/headshot.jpeg",
             technologies: ["React Native", "Firebase", "Figma"],
         },
         {

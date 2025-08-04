@@ -28,14 +28,14 @@ export const pageConfig: Record<string, PageConfig> = {
     },
     biography: {
         title: "Biography",
-        primaryImage: "/src/assets/gallery/headshot.jpeg",
+        primaryImage: "/src/assets/primary/headshot.jpeg",
         component: BiographyPage,
         description: "Learn about Rikesh Subedi's background and journey",
         keywords: ["biography", "about", "background", "journey"],
     },
     portfolio: {
         title: "Portfolio",
-        primaryImage: "/src/assets/gallery/headshot.jpeg",
+        primaryImage: "/src/assets/primary/scissor_bunny.GIF",
         component: PortfolioPage,
         description: "View my latest projects and work",
         keywords: ["portfolio", "projects", "work", "development"],

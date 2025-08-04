@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import AppShell from "./components/AppShell";
 import { pageConfig } from "./pages/config";
 import type { PageKey } from "./pages/config";
@@ -35,6 +35,23 @@ function App() {
     const pageData = pageConfig[currentPage];
 
     console.log(currentPage);
+
+    // Apply background effects based on current page
+    // TODO: remove this hack and try to use just CSS
+    React.useEffect(() => {
+        if (currentPage === "home") {
+            document.body.classList.add("hide-background");
+            document.documentElement.classList.add("hide-background");
+            document.body.classList.remove("dimmed-background");
+            document.documentElement.classList.remove("dimmed-background");
+        } else {
+            document.body.classList.remove("hide-background");
+            document.documentElement.classList.remove("hide-background");
+            document.body.classList.add("dimmed-background");
+            document.documentElement.classList.add("dimmed-background");
+        }
+    }, [currentPage]);
+
     return (
         <div
             style={{

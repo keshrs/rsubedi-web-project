@@ -1,58 +1,136 @@
 import React from "react";
 
-const PhotoGalleryPage: React.FC = () => {
-    const photos = [
-        {
-            src: "/src/assets/gallery/headshot.jpeg",
-            alt: "Professional headshot",
-            size: "large",
-        },
-        {
-            src: "/src/assets/background/hike_shot.jpeg",
-            alt: "Hiking adventure",
-            size: "medium",
-        },
-        {
-            src: "/src/assets/gallery/headshot.jpeg",
-            alt: "Portrait shot",
-            size: "small",
-        },
-        {
-            src: "/src/assets/background/hike_shot.jpeg",
-            alt: "Nature photography",
-            size: "medium",
-        },
-        {
-            src: "/src/assets/gallery/headshot.jpeg",
-            alt: "Studio portrait",
-            size: "large",
-        },
-        {
-            src: "/src/assets/background/hike_shot.jpeg",
-            alt: "Landscape view",
-            size: "small",
-        },
-        {
-            src: "/src/assets/gallery/headshot.jpeg",
-            alt: "Candid moment",
-            size: "medium",
-        },
-        {
-            src: "/src/assets/background/hike_shot.jpeg",
-            alt: "Outdoor scene",
-            size: "large",
-        },
-        {
-            src: "/src/assets/gallery/headshot.jpeg",
-            alt: "Close-up shot",
-            size: "small",
-        },
-    ];
+const PHOTOS = [
+    {
+        src: "/src/assets/primary/scissor_bunny.GIF",
+        alt: "Abstract rabbit silhouette with butterflies",
+        size: "large",
+    },
+    {
+        src: "/src/assets/gallery/IMG_5628.jpeg",
+        alt: "Scenic landscape photography",
+        size: "medium",
+    },
+    {
+        src: "/src/assets/gallery/IMG_3383.jpeg",
+        alt: "Nature photography",
+        size: "small",
+    },
+    {
+        src: "/src/assets/gallery/IMG_1886.jpeg",
+        alt: "Urban architecture",
+        size: "large",
+    },
+    {
+        src: "/src/assets/gallery/IMG_1864.jpeg",
+        alt: "Street photography",
+        size: "medium",
+    },
+    {
+        src: "/src/assets/gallery/IMG_1751.jpeg",
+        alt: "Portrait photography",
+        size: "small",
+    },
+    {
+        src: "/src/assets/gallery/IMG_1194.jpeg",
+        alt: "Travel photography",
+        size: "medium",
+    },
+    {
+        src: "/src/assets/gallery/DSC_1744.JPG",
+        alt: "Wildlife photography",
+        size: "large",
+    },
+    {
+        src: "/src/assets/gallery/DSC_1736.JPG",
+        alt: "Macro photography",
+        size: "small",
+    },
+    {
+        src: "/src/assets/gallery/DSC_1582.JPG",
+        alt: "Landscape vista",
+        size: "medium",
+    },
+    {
+        src: "/src/assets/gallery/DSC_1234.JPG",
+        alt: "Cityscape view",
+        size: "large",
+    },
+    {
+        src: "/src/assets/gallery/DSC_1203.JPG",
+        alt: "Abstract photography",
+        size: "small",
+    },
+    {
+        src: "/src/assets/gallery/DSC_1133.JPG",
+        alt: "Documentary style",
+        size: "medium",
+    },
+    {
+        src: "/src/assets/gallery/DSC_0672.JPG",
+        alt: "Fine art photography",
+        size: "large",
+    },
+    {
+        src: "/src/assets/gallery/DSC_0590.JPG",
+        alt: "Street art",
+        size: "small",
+    },
+    {
+        src: "/src/assets/gallery/DSC_0535.JPG",
+        alt: "Architectural detail",
+        size: "medium",
+    },
+    {
+        src: "/src/assets/gallery/DSC_0457.JPG",
+        alt: "Natural light portrait",
+        size: "large",
+    },
+    {
+        src: "/src/assets/gallery/DSC_0317.JPG",
+        alt: "Environmental portrait",
+        size: "small",
+    },
+    {
+        src: "/src/assets/gallery/DSC_0311.JPG",
+        alt: "Candid moment",
+        size: "medium",
+    },
+    {
+        src: "/src/assets/gallery/DSC_0264.JPG",
+        alt: "Studio portrait",
+        size: "large",
+    },
+    {
+        src: "/src/assets/gallery/DSC_0164.JPG",
+        alt: "Close-up detail",
+        size: "small",
+    },
+    {
+        src: "/src/assets/gallery/DSC_0128.JPG",
+        alt: "Composition study",
+        size: "medium",
+    },
+    {
+        src: "/src/assets/gallery/DSC_0064.JPG",
+        alt: "Light and shadow",
+        size: "large",
+    },
+    {
+        src: "/src/assets/gallery/DSC_0023.JPG",
+        alt: "Texture and pattern",
+        size: "small",
+    },
+    {
+        src: "/src/assets/gallery/DSC_0017.JPG",
+        alt: "Mood and atmosphere",
+        size: "medium",
+    },
+];
 
+const PhotoGalleryPage: React.FC = () => {
     return (
         <div style={{ lineHeight: "1.6" }}>
-            <h2>Photo Gallery</h2>
-
             <div
                 style={{
                     display: "grid",
@@ -62,7 +140,7 @@ const PhotoGalleryPage: React.FC = () => {
                     padding: "1rem 0",
                 }}
             >
-                {photos.map((photo, index) => (
+                {PHOTOS.map((photo, index) => (
                     <div
                         key={index}
                         style={{

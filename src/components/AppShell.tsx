@@ -34,13 +34,25 @@ const AppShell: React.FC<AppShellProps> = ({
                     marginTop: "0.5rem",
                 }}
             >
-                <a href="#" style={{ color: "#3b82f6" }}>
+                <a
+                    href="https://www.linkedin.com/in/keshrs/"
+                    target="_blank"
+                    style={{ color: "#3b82f6" }}
+                >
                     LinkedIn
                 </a>
-                <a href="#" style={{ color: "#3b82f6" }}>
+                <a
+                    href="https://github.com/keshrs"
+                    target="_blank"
+                    style={{ color: "#3b82f6" }}
+                >
                     GitHub
                 </a>
-                <a href="#" style={{ color: "#3b82f6" }}>
+                <a
+                    href="https://x.com/keshrs"
+                    target="_blank"
+                    style={{ color: "#3b82f6" }}
+                >
                     Twitter
                 </a>
             </div>
@@ -56,7 +68,7 @@ const AppShell: React.FC<AppShellProps> = ({
                     justifyContent: !title ? "flex-end" : "space-between",
                 }}
             >
-                {title && <TitleBar title={title} />}
+                {title && <TitleBar title={title} onNavigate={onNavigate} />}
                 {/* Desktop Action Row */}
                 <div className="action-row desktop">
                     <ActionRow />

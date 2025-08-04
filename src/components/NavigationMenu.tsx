@@ -10,32 +10,32 @@ const navigationButtons = [
     {
         label: "Home",
         route: "home",
-        icon: "🏠",
+        icon: null,
     },
     {
         label: "Biography",
         route: "biography",
-        icon: "👤",
+        icon: null,
     },
     {
         label: "Portfolio",
         route: "portfolio",
-        icon: "💼",
+        icon: null,
     },
     {
         label: "Events",
         route: "events",
-        icon: "🎉",
+        icon: null,
     },
     {
         label: "Video Gallery",
         route: "videoGallery",
-        icon: "🎥",
+        icon: null,
     },
     {
         label: "Photo Gallery",
         route: "photoGallery",
-        icon: "📷",
+        icon: null,
     },
 ];
 

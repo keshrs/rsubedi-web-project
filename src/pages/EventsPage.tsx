@@ -1,84 +1,229 @@
-import React from "react";
+import React, { useState, useMemo, useCallback } from "react";
+
+// Static data - moved outside component
+const EVENTS_DATA = [
+    {
+        date: "2025-08-15",
+        event: "Dog Band - Album Release Show",
+        location: "San Francisco, CA",
+        status: "Upcoming",
+    },
+    {
+        date: "2025-06-15",
+        event: "Dog Band - Local Venue",
+        location: "San Francisco, CA",
+        status: "Completed",
+    },
+    {
+        date: "2025-04-20",
+        event: "Dog Band - Local Bar Show",
+        location: "Oakland, CA",
+        status: "Completed",
+    },
+    {
+        date: "2025-02-08",
+        event: "Dog Band - House Party",
+        location: "San Francisco, CA",
+        status: "Completed",
+    },
+    {
+        date: "2024-12-14",
+        event: "Dog Band - Local Venue",
+        location: "Oakland, CA",
+        status: "Completed",
+    },
+    {
+        date: "2024-10-05",
+        event: "Dog Band - Local Venue",
+        location: "San Francisco, CA",
+        status: "Completed",
+    },
+    {
+        date: "2024-08-15",
+        event: "Dog Band - Local Venue",
+        location: "Oakland, CA",
+        status: "Completed",
+    },
+    {
+        date: "2024-06-22",
+        event: "Dog Band - Local Venue",
+        location: "San Francisco, CA",
+        status: "Completed",
+    },
+    {
+        date: "2024-04-12",
+        event: "Dog Band - Local Venue",
+        location: "Oakland, CA",
+        status: "Completed",
+    },
+    {
+        date: "2024-02-03",
+        event: "Dog Band - Local Venue",
+        location: "San Francisco, CA",
+        status: "Completed",
+    },
+    {
+        date: "2023-12-16",
+        event: "Dog Band - Local Venue",
+        location: "Oakland, CA",
+        status: "Completed",
+    },
+    {
+        date: "2023-10-28",
+        event: "Dog Band - Local Venue",
+        location: "San Francisco, CA",
+        status: "Completed",
+    },
+    {
+        date: "2023-08-25",
+        event: "Dog Band - First Show",
+        location: "Oakland, CA",
+        status: "Completed",
+    },
+    {
+        date: "2023-06-10",
+        event: "Box Factory - Final Show",
+        location: "Richmond, VA",
+        status: "Completed",
+    },
+    {
+        date: "2023-04-15",
+        event: "Box Factory - House Show",
+        location: "Virginia Beach, VA",
+        status: "Completed",
+    },
+    {
+        date: "2023-02-18",
+        event: "Box Factory - House Show",
+        location: "Charlottesville, VA",
+        status: "Completed",
+    },
+    {
+        date: "2022-12-03",
+        event: "Box Factory - House Show",
+        location: "Richmond, VA",
+        status: "Completed",
+    },
+    {
+        date: "2022-10-22",
+        event: "Box Factory - House Show",
+        location: "Virginia Beach, VA",
+        status: "Completed",
+    },
+    {
+        date: "2022-08-13",
+        event: "Box Factory - House Show",
+        location: "Charlottesville, VA",
+        status: "Completed",
+    },
+    {
+        date: "2022-06-25",
+        event: "Box Factory - Local Bar",
+        location: "Richmond, VA",
+        status: "Completed",
+    },
+    {
+        date: "2022-04-15",
+        event: "Box Factory - First Gig",
+        location: "Richmond, VA",
+        status: "Completed",
+    },
+];
+
+// Static utility functions - moved outside component
+const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+    });
+};
+
+const getStatusColor = (status: string) => {
+    switch (status) {
+        case "Completed":
+            return "#059669";
+        case "Upcoming":
+            return "#a16207";
+        default:
+            return "#6b7280";
+    }
+};
+
+const getSortIcon = (
+    column: string,
+    sortColumn: string,
+    sortDirection: "asc" | "desc"
+) => {
+    if (sortColumn !== column) {
+        return "▼▲";
+    }
+    return sortDirection === "asc" ? "▲" : "▼";
+};
 
 const EventsPage: React.FC = () => {
-    const events = [
-        {
-            date: "2024-03-15",
-            event: "Tech Conference 2024",
-            location: "San Francisco, CA",
-            status: "Upcoming",
-        },
-        {
-            date: "2024-02-28",
-            event: "Web Development Workshop",
-            location: "Online",
-            status: "Completed",
-        },
-        {
-            date: "2024-01-20",
-            event: "React Meetup",
-            location: "Seattle, WA",
-            status: "Completed",
-        },
-        {
-            date: "2024-04-10",
-            event: "Open Source Summit",
-            location: "Austin, TX",
-            status: "Upcoming",
-        },
-        {
-            date: "2024-05-05",
-            event: "Design Systems Conference",
-            location: "New York, NY",
-            status: "Upcoming",
-        },
-        {
-            date: "2024-06-15",
-            event: "Developer Bootcamp",
-            location: "Online",
-            status: "Registration Open",
-        },
-    ];
+    const [sortColumn, setSortColumn] = useState<string>("date");
+    const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
 
-    const formatDate = (dateString: string) => {
-        return new Date(dateString).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
+    // Memoized sort handler
+    const handleSort = useCallback(
+        (column: string) => {
+            if (sortColumn === column) {
+                setSortDirection((prevDirection) =>
+                    prevDirection === "asc" ? "desc" : "asc"
+                );
+            } else {
+                setSortColumn(column);
+                setSortDirection("asc");
+            }
+        },
+        [sortColumn]
+    );
+
+    // Memoized sorted events
+    const sortedEvents = useMemo(() => {
+        return [...EVENTS_DATA].sort((a, b) => {
+            let aValue: string | number;
+            let bValue: string | number;
+
+            switch (sortColumn) {
+                case "date":
+                    aValue = new Date(a.date).getTime();
+                    bValue = new Date(b.date).getTime();
+                    break;
+                case "event":
+                    aValue = a.event.toLowerCase();
+                    bValue = b.event.toLowerCase();
+                    break;
+                case "location":
+                    aValue = a.location.toLowerCase();
+                    bValue = b.location.toLowerCase();
+                    break;
+                case "status":
+                    aValue = a.status.toLowerCase();
+                    bValue = b.status.toLowerCase();
+                    break;
+                default:
+                    return 0;
+            }
+
+            if (sortDirection === "asc") {
+                return aValue > bValue ? 1 : -1;
+            } else {
+                return aValue < bValue ? 1 : -1;
+            }
         });
-    };
-
-    const getStatusColor = (status: string) => {
-        switch (status) {
-            case "Completed":
-                return "#10b981";
-            case "Upcoming":
-                return "#3b82f6";
-            case "Registration Open":
-                return "#f59e0b";
-            default:
-                return "#6b7280";
-        }
-    };
+    }, [sortColumn, sortDirection]);
 
     return (
         <div style={{ lineHeight: "1.6" }}>
-            <h2>Events</h2>
+            <h2>Events I've participated in:</h2>
 
             <div
-                style={{
-                    overflowX: "auto",
-                    border: "1px solid #e5e7eb",
-                    borderRadius: "8px",
-                }}
+                className="events-table-container"
+                style={{ overflowX: "auto" }}
             >
-                <table
-                    style={{
-                        width: "100%",
-                        borderCollapse: "collapse",
-                        minWidth: "600px",
-                    }}
-                >
+                <table className="events-table">
                     <thead>
                         <tr
                             style={{
@@ -87,87 +232,62 @@ const EventsPage: React.FC = () => {
                             }}
                         >
                             <th
-                                style={{
-                                    padding: "1rem",
-                                    textAlign: "left",
-                                    fontWeight: "600",
-                                    color: "#374151",
-                                }}
+                                className={
+                                    sortColumn === "date" ? "selected" : ""
+                                }
+                                onClick={() => handleSort("date")}
                             >
-                                Date
+                                Date{" "}
+                                {getSortIcon("date", sortColumn, sortDirection)}
                             </th>
                             <th
-                                style={{
-                                    padding: "1rem",
-                                    textAlign: "left",
-                                    fontWeight: "600",
-                                    color: "#374151",
-                                }}
+                                className={
+                                    sortColumn === "event" ? "selected" : ""
+                                }
+                                onClick={() => handleSort("event")}
                             >
-                                Event
+                                Event{" "}
+                                {getSortIcon(
+                                    "event",
+                                    sortColumn,
+                                    sortDirection
+                                )}
                             </th>
                             <th
-                                style={{
-                                    padding: "1rem",
-                                    textAlign: "left",
-                                    fontWeight: "600",
-                                    color: "#374151",
-                                }}
+                                className={
+                                    sortColumn === "location" ? "selected" : ""
+                                }
+                                onClick={() => handleSort("location")}
                             >
-                                Location
+                                Location{" "}
+                                {getSortIcon(
+                                    "location",
+                                    sortColumn,
+                                    sortDirection
+                                )}
                             </th>
                             <th
-                                style={{
-                                    padding: "1rem",
-                                    textAlign: "left",
-                                    fontWeight: "600",
-                                    color: "#374151",
-                                }}
+                                className={
+                                    sortColumn === "status" ? "selected" : ""
+                                }
+                                onClick={() => handleSort("status")}
                             >
-                                Status
+                                Status{" "}
+                                {getSortIcon(
+                                    "status",
+                                    sortColumn,
+                                    sortDirection
+                                )}
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {events.map((event, index) => (
-                            <tr
-                                key={index}
-                                style={{
-                                    borderBottom: "1px solid #e5e7eb",
-                                    backgroundColor:
-                                        index % 2 === 0 ? "#ffffff" : "#f9fafb",
-                                }}
-                            >
-                                <td
-                                    style={{
-                                        padding: "1rem",
-                                        fontWeight: "500",
-                                        color: "#374151",
-                                    }}
-                                >
-                                    {formatDate(event.date)}
-                                </td>
-                                <td
-                                    style={{
-                                        padding: "1rem",
-                                        color: "#374151",
-                                    }}
-                                >
-                                    {event.event}
-                                </td>
-                                <td
-                                    style={{
-                                        padding: "1rem",
-                                        color: "#6b7280",
-                                    }}
-                                >
-                                    {event.location}
-                                </td>
-                                <td
-                                    style={{
-                                        padding: "1rem",
-                                    }}
-                                >
+                        {sortedEvents.map((event, index) => (
+                            <tr key={index}>
+                                <td>{formatDate(event.date)}</td>
+                                <td>{event.event}</td>
+                                <td>{event.location}</td>
+                                <td>
                                     <span
                                         style={{
                                             backgroundColor: getStatusColor(

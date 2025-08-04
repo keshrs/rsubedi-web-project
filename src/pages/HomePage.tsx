@@ -1,118 +1,59 @@
 import React from "react";
+import TitleBar from "../components/TitleBar";
+// import NavigationMenu from "../components/NavigationMenu";
 
 const HomePage: React.FC = () => {
     return (
-        <div
-            style={{
-                lineHeight: "1.6",
-            }}
-        >
-            {/* <p>
-                Hello! I'm a passionate developer and creative problem
-                solver. I love building beautiful, functional applications
-                that make a difference.
-            </p>
-            <p>
-                With expertise in modern web technologies, I specialize in
-                creating responsive, accessible, and performant user
-                experiences.
-            </p>
-            <p>
-                When I'm not coding, you can find me exploring new
-                technologies, contributing to open source projects, or
-                sharing knowledge with the community. When I'm not coding,
-                you can find me exploring new technologies, contributing to
-                open source projects, or sharing knowledge with the
-                community. When I'm not coding, you can find me exploring
-                new technologies, contributing to open source projects, or
-                sharing knowledge with the community. When I'm not coding,
-                you can find me exploring new technologies, contributing to
-                open source projects, or sharing knowledge with the
-                community. When I'm not coding, you can find me exploring
-                new technologies, contributing to open source projects, or
-                sharing knowledge with the community. When I'm not coding,
-                you can find me exploring new technologies, contributing to
-                open source projects, or sharing knowledge with the
-                community. When I'm not coding, you can find me exploring
-                new technologies, contributing to open source projects, or
-                sharing knowledge with the community. When I'm not coding,
-                you can find me exploring new technologies, contributing to
-                open source projects, or sharing knowledge with the
-                community. When I'm not coding, you can find me exploring
-                new technologies, contributing to open source projects, or
-                sharing knowledge with the community.
-            </p> */}
-            {/* <p>
-                When I'm not coding, you can find me exploring new
-                technologies, contributing to open source projects, or
-                sharing knowledge with the community.
-            </p>
-            <p>
-                When I'm not coding, you can find me exploring new
-                technologies, contributing to open source projects, or
-                sharing knowledge with the community. When I'm not coding,
-                you can find me exploring new technologies, contributing to
-                open source projects, or sharing knowledge with the
-                community. When I'm not coding, you can find me exploring
-                new technologies, contributing to open source projects, or
-                sharing knowledge with the community. When I'm not coding,
-                you can find me exploring new technologies, contributing to
-                open source projects, or sharing knowledge with the
-                community. When I'm not coding, you can find me exploring
-                new technologies, contributing to open source projects, or
-                sharing knowledge with the community. When I'm not coding,
-                you can find me exploring new technologies, contributing to
-                open source projects, or sharing knowledge with the
-                community. When I'm not coding, you can find me exploring
-                new technologies, contributing to open source projects, or
-                sharing knowledge with the community. When I'm not coding,
-                you can find me exploring new technologies, contributing to
-                open source projects, or sharing knowledge with the
-                community. When I'm not coding, you can find me exploring
-                new technologies, contributing to open source projects, or
-                sharing knowledge with the community.
-            </p>
-            <p>
-                When I'm not coding, you can find me exploring new
-                technologies, contributing to open source projects, or
-                sharing knowledge with the community.
-            </p>
-            <p>
-                When I'm not coding, you can find me exploring new
-                technologies, contributing to open source projects, or
-                sharing knowledge with the community. When I'm not coding,
-                you can find me exploring new technologies, contributing to
-                open source projects, or sharing knowledge with the
-                community. When I'm not coding, you can find me exploring
-                new technologies, contributing to open source projects, or
-                sharing knowledge with the community. When I'm not coding,
-                you can find me exploring new technologies, contributing to
-                open source projects, or sharing knowledge with the
-                community. When I'm not coding, you can find me exploring
-                new technologies, contributing to open source projects, or
-                sharing knowledge with the community. When I'm not coding,
-                you can find me exploring new technologies, contributing to
-                open source projects, or sharing knowledge with the
-                community. When I'm not coding, you can find me exploring
-                new technologies, contributing to open source projects, or
-                sharing knowledge with the community. When I'm not coding,
-                you can find me exploring new technologies, contributing to
-                open source projects, or sharing knowledge with the
-                community. When I'm not coding, you can find me exploring
-                new technologies, contributing to open source projects, or
-                sharing knowledge with the community.
-            </p>
-            <p>
-                When I'm not coding, you can find me exploring new
-                technologies, contributing to open source projects, or
-                sharing knowledge with the community.
-            </p>
-            <p>
-                When I'm not coding, you can find me exploring new
-                technologies, contributing to open source projects, or
-                sharing knowledge with the community.
-            </p> */}
-        </div>
+        <>
+            {/* Video Background - Only on Home Page */}
+            <div className="video-background-container">
+                <video
+                    className="video-background"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    style={{
+                        position: "fixed",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        zIndex: -1,
+                        objectFit: "cover",
+                    }}
+                >
+                    <source src="/glacier.mp4" type="video/mp4" />
+                    {/* Fallback to background image if video fails to load */}
+                </video>
+            </div>
+
+            <div
+                style={{
+                    lineHeight: "1.6",
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-end",
+                    justifyContent: "flex-end",
+                }}
+            >
+                <TitleBar title="Rikesh Subedi" size="large" />
+                {/* <div
+                    style={{
+                        width: "50%",
+                        height: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "flex-end",
+                    }}
+                >
+                    <NavigationMenu />
+                </div> */}
+            </div>
+        </>
     );
 };
 
