@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
                         objectFit: "cover",
                     }}
                 >
-                    <source src="/glacier.mp4" type="video/mp4" />
+                    <source src="/rsubedi-web-project/glacier.mp4" type="video/mp4" />
                     {/* Fallback to background image if video fails to load */}
                 </video>
             </div>
