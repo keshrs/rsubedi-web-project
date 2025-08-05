@@ -1,129 +1,156 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 
+// Import all gallery images
+import scissorBunnyImage from "../assets/primary/scissor_bunny.GIF";
+import img5628 from "../assets/gallery/IMG_5628.jpeg";
+import img3383 from "../assets/gallery/IMG_3383.jpeg";
+import img1886 from "../assets/gallery/IMG_1886.jpeg";
+import img1864 from "../assets/gallery/IMG_1864.jpeg";
+import img1751 from "../assets/gallery/IMG_1751.jpeg";
+import img1194 from "../assets/gallery/IMG_1194.jpeg";
+import dsc1744 from "../assets/gallery/DSC_1744.JPG";
+import dsc1736 from "../assets/gallery/DSC_1736.JPG";
+import dsc1582 from "../assets/gallery/DSC_1582.JPG";
+import dsc1234 from "../assets/gallery/DSC_1234.JPG";
+import dsc1203 from "../assets/gallery/DSC_1203.JPG";
+import dsc1133 from "../assets/gallery/DSC_1133.JPG";
+import dsc0672 from "../assets/gallery/DSC_0672.JPG";
+import dsc0590 from "../assets/gallery/DSC_0590.JPG";
+import dsc0535 from "../assets/gallery/DSC_0535.JPG";
+import dsc0457 from "../assets/gallery/DSC_0457.JPG";
+import dsc0317 from "../assets/gallery/DSC_0317.JPG";
+import dsc0311 from "../assets/gallery/DSC_0311.JPG";
+import dsc0264 from "../assets/gallery/DSC_0264.JPG";
+import dsc0164 from "../assets/gallery/DSC_0164.JPG";
+import dsc0128 from "../assets/gallery/DSC_0128.JPG";
+import dsc0064 from "../assets/gallery/DSC_0064.JPG";
+import dsc0023 from "../assets/gallery/DSC_0023.JPG";
+import dsc0017 from "../assets/gallery/DSC_0017.JPG";
+
 const PHOTOS = [
     {
-        src: "/primary/scissor_bunny.GIF",
+        src: scissorBunnyImage,
         alt: "Abstract rabbit silhouette with butterflies",
         size: "large",
     },
     {
-        src: "/gallery/IMG_5628.jpeg",
+        src: img5628,
         alt: "Scenic landscape photography",
         size: "medium",
     },
     {
-        src: "/gallery/IMG_3383.jpeg",
+        src: img3383,
         alt: "Nature photography",
         size: "small",
     },
     {
-        src: "/gallery/IMG_1886.jpeg",
+        src: img1886,
         alt: "Urban architecture",
         size: "large",
     },
     {
-        src: "/gallery/IMG_1864.jpeg",
+        src: img1864,
         alt: "Street photography",
         size: "medium",
     },
     {
-        src: "/gallery/IMG_1751.jpeg",
+        src: img1751,
         alt: "Portrait photography",
         size: "small",
     },
     {
-        src: "/gallery/IMG_1194.jpeg",
+        src: img1194,
         alt: "Travel photography",
         size: "medium",
     },
     {
-        src: "/gallery/DSC_1744.JPG",
+        src: dsc1744,
         alt: "Wildlife photography",
         size: "large",
     },
     {
-        src: "/gallery/DSC_1736.JPG",
+        src: dsc1736,
         alt: "Macro photography",
         size: "small",
     },
     {
-        src: "/gallery/DSC_1582.JPG",
+        src: dsc1582,
         alt: "Landscape vista",
         size: "medium",
     },
     {
-        src: "/gallery/DSC_1234.JPG",
+        src: dsc1234,
         alt: "Cityscape view",
         size: "large",
     },
     {
-        src: "/gallery/DSC_1203.JPG",
+        src: dsc1203,
         alt: "Abstract photography",
         size: "small",
     },
     {
-        src: "/gallery/DSC_1133.JPG",
+        src: dsc1133,
         alt: "Documentary style",
         size: "medium",
     },
     {
-        src: "/gallery/DSC_0672.JPG",
+        src: dsc0672,
         alt: "Fine art photography",
         size: "large",
     },
     {
-        src: "/gallery/DSC_0590.JPG",
+        src: dsc0590,
         alt: "Street art",
         size: "small",
     },
     {
-        src: "/gallery/DSC_0535.JPG",
+        src: dsc0535,
         alt: "Architectural detail",
         size: "medium",
     },
     {
-        src: "/gallery/DSC_0457.JPG",
+        src: dsc0457,
         alt: "Natural light portrait",
         size: "large",
     },
     {
-        src: "/gallery/DSC_0317.JPG",
+        src: dsc0317,
         alt: "Environmental portrait",
         size: "small",
     },
     {
-        src: "/gallery/DSC_0311.JPG",
+        src: dsc0311,
         alt: "Candid moment",
         size: "medium",
     },
     {
-        src: "/gallery/DSC_0264.JPG",
+        src: dsc0264,
         alt: "Studio portrait",
         size: "large",
     },
     {
-        src: "/gallery/DSC_0164.JPG",
+        src: dsc0164,
         alt: "Close-up detail",
         size: "small",
     },
     {
-        src: "/gallery/DSC_0128.JPG",
+        src: dsc0128,
         alt: "Composition study",
         size: "medium",
     },
     {
-        src: "/gallery/DSC_0064.JPG",
+        src: dsc0064,
         alt: "Light and shadow",
         size: "large",
     },
     {
-        src: "/gallery/DSC_0023.JPG",
+        src: dsc0023,
         alt: "Texture and pattern",
         size: "small",
     },
     {
-        src: "/gallery/DSC_0017.JPG",
+        src: dsc0017,
         alt: "Mood and atmosphere",
         size: "medium",
     },
