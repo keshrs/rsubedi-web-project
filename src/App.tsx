@@ -10,7 +10,18 @@ function App() {
     // Simple router effect that reads the URL pathname
     useEffect(() => {
         const pathname = window.location.pathname;
-        const path = pathname === "/" ? "home" : pathname.slice(1); // Remove leading slash
+
+        // Handle GitHub Pages base path
+        const basePath = "/rsubedi-web-project";
+        let path = pathname;
+
+        // Remove base path if it exists
+        if (pathname.startsWith(basePath)) {
+            path = pathname.slice(basePath.length);
+        }
+
+        // Handle root path
+        path = path === "/" ? "home" : path.slice(1); // Remove leading slash
 
         // Check if the path exists in our page config
         if (path in pageConfig) {
@@ -19,7 +30,10 @@ function App() {
             // Default to home if path doesn't exist
             setCurrentPage("home");
             // Update URL to reflect the actual page
-            window.history.replaceState(null, "", "/");
+            const newPath = window.location.pathname.startsWith(basePath)
+                ? `${basePath}/`
+                : "/";
+            window.history.replaceState(null, "", newPath);
         }
     }, []);
 
@@ -27,8 +41,12 @@ function App() {
     const handleNavigate = (page: string) => {
         if (page in pageConfig) {
             setCurrentPage(page as PageKey);
+            const basePath = "/rsubedi-web-project";
             const path = page === "home" ? "/" : `/${page}`;
-            window.history.pushState(null, "", path);
+            const fullPath = window.location.pathname.startsWith(basePath)
+                ? `${basePath}${path}`
+                : path;
+            window.history.pushState(null, "", fullPath);
         }
     };
 
