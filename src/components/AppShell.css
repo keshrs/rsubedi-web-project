@@ -87,6 +87,23 @@ html.hide-background {
     align-items: center;
 }
 
+.action-row-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+}
+
+.action-row-search {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    outline: none;
+    font-size: 1rem;
+    flex: 1;
+    min-width: 0;
+}
+
 /* Mobile Menu Button */
 .mobile-menu-button {
     display: none;
@@ -126,7 +143,7 @@ html.hide-background {
 }
 
 .mobile-menu-content {
-    background-color: var(--primary-color);
+    background-color: var(--overlay-color-light);
     width: 80%;
     max-width: 300px;
     height: 100%;
@@ -135,6 +152,15 @@ html.hide-background {
     flex-direction: column;
     gap: 2rem;
     box-shadow: 2px 0 10px var(--shadow-color);
+}
+
+.mobile-menu-content .action-row {
+    padding: 0 1rem;
+}
+
+.mobile-menu-content .action-row input {
+    min-width: 0;
+    flex: 1;
 }
 
 .mobile-menu-close {
@@ -348,6 +374,30 @@ html.hide-background {
     font-size: 1.25rem;
     width: 1.5rem;
     text-align: center;
+}
+
+/* Title Bar Hover Effects */
+.title-bar:hover {
+    opacity: 0.8;
+}
+
+.title-bar:hover .title-icon {
+    transform: rotate(-45deg);
+}
+
+/* Video Gallery Responsive Layout */
+.video-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+@media (max-width: 768px) {
+    .video-gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }
 
 /* Responsive Design */

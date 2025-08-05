@@ -12,19 +12,19 @@ const sizeConfig = {
         iconSize: "4rem",
         titleSize: "2rem",
         gap: "1rem",
-        padding: "0.5rem",
+        padding: "0.25rem",
     },
     medium: {
         iconSize: "6rem",
         titleSize: "2.5rem",
         gap: "1rem",
-        padding: "1rem",
+        padding: "0.5rem",
     },
     large: {
         iconSize: "8rem",
         titleSize: "5rem",
         gap: "1.5rem",
-        padding: "1.5rem",
+        padding: "0.75rem",
     },
 };
 
@@ -55,16 +55,6 @@ const TitleBar: React.FC<TitleBarProps> = ({
                 gap: config.gap,
                 padding: config.padding,
             }}
-            onMouseEnter={(e) => {
-                if (onNavigate) {
-                    e.currentTarget.style.opacity = "0.8";
-                }
-            }}
-            onMouseLeave={(e) => {
-                if (onNavigate) {
-                    e.currentTarget.style.opacity = "1";
-                }
-            }}
         >
             <img
                 src="/src/assets/icons/compass.svg"
@@ -73,6 +63,7 @@ const TitleBar: React.FC<TitleBarProps> = ({
                 style={{
                     width: config.iconSize,
                     height: config.iconSize,
+                    transition: "transform 0.3s ease-in-out",
                 }}
             />
             <h1

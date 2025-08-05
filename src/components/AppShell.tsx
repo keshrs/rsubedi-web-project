@@ -88,8 +88,11 @@ const AppShell: React.FC<AppShellProps> = ({
 
             {/* Mobile Menu Overlay */}
             {isMobileMenuOpen && (
-                <div className="mobile-menu-overlay">
-                    <div className="mobile-menu-content">
+                <div className="mobile-menu-overlay" onClick={toggleMobileMenu}>
+                    <div
+                        className="mobile-menu-content"
+                        onClick={(e) => e.stopPropagation()}
+                    >
                         <button
                             className="mobile-menu-close"
                             onClick={toggleMobileMenu}

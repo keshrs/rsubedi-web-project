@@ -34,14 +34,7 @@ const VideoGalleryPage: React.FC = () => {
 
     return (
         <div style={{ lineHeight: "1.6" }}>
-            <div
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(3, 1fr)",
-                    gap: "2rem",
-                    padding: "2rem 0",
-                }}
-            >
+            <div className="video-gallery-grid">
                 {videos.map((video) => (
                     <div
                         key={video.id}

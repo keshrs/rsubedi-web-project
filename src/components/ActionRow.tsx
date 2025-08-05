@@ -2,12 +2,7 @@ import React from "react";
 
 const ActionRow: React.FC = () => {
     return (
-        <div
-            style={{
-                display: "flex",
-                gap: "1rem",
-            }}
-        >
+        <div className="action-row-container">
             <button
                 className="action-row-button"
                 onClick={() => console.log("Cart clicked")}
@@ -32,14 +27,6 @@ const ActionRow: React.FC = () => {
                 type="text"
                 placeholder="Search..."
                 className="action-row-search"
-                style={{
-                    padding: "0.5rem 1rem",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "0.5rem",
-                    outline: "none",
-                    fontSize: "1rem",
-                    minWidth: "200px",
-                }}
                 onKeyDown={(e) => {
                     if (e.key === "Enter") {
                         console.log("Search submitted:", e.currentTarget.value);
