@@ -1,4 +1,5 @@
 import React from "react";
+import compassIcon from "../assets/icons/compass.svg";
 
 interface TitleBarProps {
     title: string;
@@ -57,7 +58,7 @@ const TitleBar: React.FC<TitleBarProps> = ({
             }}
         >
             <img
-                src="/src/assets/icons/compass.svg"
+                src={compassIcon}
                 alt="Compass Icon"
                 className="title-icon"
                 style={{

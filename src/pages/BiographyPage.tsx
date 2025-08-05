@@ -1,4 +1,6 @@
 import React from "react";
+import coupleImage from "../assets/inline/couple.jpeg";
+import robloxImage from "../assets/inline/roblox.gif";
 
 const BiographyPage: React.FC = () => {
     return (
@@ -28,7 +30,7 @@ const BiographyPage: React.FC = () => {
                 </p>
                 <p>
                     <img
-                        src="/src/assets/inline/couple.jpeg"
+                        src={coupleImage}
                         alt="Rikesh and Natalie"
                         style={{
                             width: "400px",
@@ -97,7 +99,7 @@ const BiographyPage: React.FC = () => {
                 </p>
                 <p>
                     <img
-                        src="/src/assets/inline/roblox.gif"
+                        src={robloxImage}
                         alt="Rikesh and Natalie"
                         style={{
                             width: "400px",

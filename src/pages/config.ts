@@ -6,6 +6,10 @@ import EventsPage from "./EventsPage";
 import VideoGalleryPage from "./VideoGalleryPage";
 import PhotoGalleryPage from "./PhotoGalleryPage";
 
+// Import assets
+import headshotImage from "../assets/primary/headshot.jpeg";
+import scissorBunnyImage from "../assets/primary/scissor_bunny.GIF";
+
 export interface PageConfig {
     title?: string;
     primaryImage?: string;
@@ -28,14 +32,14 @@ export const pageConfig: Record<string, PageConfig> = {
     },
     biography: {
         title: "Biography",
-        primaryImage: "/src/assets/primary/headshot.jpeg",
+        primaryImage: headshotImage,
         component: BiographyPage,
         description: "Learn about Rikesh Subedi's background and journey",
         keywords: ["biography", "about", "background", "journey"],
     },
     portfolio: {
         title: "Portfolio",
-        primaryImage: "/src/assets/primary/scissor_bunny.GIF",
+        primaryImage: scissorBunnyImage,
         component: PortfolioPage,
         description: "View my latest projects and work",
         keywords: ["portfolio", "projects", "work", "development"],
