@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const PORTFOLIO_ITEMS = [
     {
         id: 1,
-        image: "/src/assets/gallery/DSC_0128.JPG",
+        image: "/gallery/DSC_0128.JPG",
         title: "Nature Photography",
         description:
             "Especially in 2023 and 2024, I spent a lot of time in nature, while at the same time learning how to use a mirrorless camera. I've been a fan of photography for a long time, but until a few years ago I was nervous to experiment and intimidated by the technical aspects of the process. I've been trying to get better at it ever since, and I'm still learning a lot. Because personal travel tends to involve hiking, I've been able to get a lot of practice with landscape photography, and I've been able to capture some really beautiful images.",
@@ -11,7 +11,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 2,
-        image: "/src/assets/gallery/IMG_5628.jpeg",
+        image: "/gallery/IMG_5628.jpeg",
         title: "Street Photography",
         description:
             "A complement to my nature photography, I've been trying to get better at street photography. Since I live in San Francisco, most of this is of the city and surrounding areas. That being said, I've traveled to New York and Seattle a decent amount and done some photography in those cities as well.",
@@ -19,7 +19,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 3,
-        image: "/src/assets/gallery/DSC_1133.JPG",
+        image: "/gallery/DSC_1133.JPG",
         title: "Music",
         description:
             "From my band's performances to personal work that hasn't seen the light of day, I've been making music off and on since I was a teenager. I started with bass guitar but have expanded to other instruments like synthesizers and my own voice. I'm a bit of a jack of all trades and master of none, but that's all ok because I'm having fun! I explore many many genres and also do some concert photography.",
@@ -53,7 +53,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 5,
-        image: "/src/assets/portfolio/design.png",
+        image: "/portfolio/design.png",
         title: "Design",
         description:
             "Though I'm fairly new to design, I've been trying to get better at it. I've been doing some UI/UX design for my own projects, and I'm taking a few classes with UC Berkeley's Extension school to get up to speed! I've had a good amount of fun working on the engineering side of design systems, and I'm trying to get into the more creative side of design as well.",
