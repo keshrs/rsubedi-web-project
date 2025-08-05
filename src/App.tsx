@@ -20,6 +20,14 @@ function App() {
             path = pathname.slice(basePath.length);
         }
 
+        // Handle 404.html redirect (GitHub Pages SPA fix)
+        const redirect = window.location.search.match(/\?\/?(.*)/);
+        if (redirect) {
+            const redirectPath = redirect[1].split("?")[0];
+            const cleanPath = redirectPath.replace(/~and~/g, "&");
+            path = cleanPath.startsWith("/") ? cleanPath.slice(1) : cleanPath;
+        }
+
         // Handle root path
         path = path === "/" ? "home" : path.slice(1); // Remove leading slash
 
